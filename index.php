@@ -6,7 +6,7 @@ require_once 'controller/UsuarioController.php';
 
 
 require_once 'head.php';
-
+ob_start();
 if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
     require_once 'view/menu.php';
     if (isset($_GET["page"]) &&  $_GET["page"] == "usuario") {
@@ -24,6 +24,7 @@ if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
 
                 $usuario = call_user_func(array('UsuarioController', 'excluir'), $_GET['id']);
                 require_once 'view/listUsuario.php';
+                return;
             }
         } else {
             require_once 'view/cadUsuario.php';
@@ -59,4 +60,5 @@ if (isset($_SESSION['logado']) && $_SESSION['logado'] == true) {
 }
 
 require_once 'foot.php';
+ob_end_flush();
 ?>

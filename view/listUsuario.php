@@ -1,7 +1,7 @@
 <h1>Usuarios</h1>
 <hr>
 <div>
-    <table>
+    <table style="border: 2px solid lightgrey; ">
         <thead>
             <tr>
                 <th>Login</th>
@@ -9,7 +9,7 @@
                 <th><a href="index.php?page=usuario">Novo</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody style="border: 2px solid lightgrey; ">
             <?php
 
                 require_once 'controller/UsuarioController.php';
@@ -19,12 +19,12 @@
                 if(isset($usuarios) && !empty($usuarios)){
                     foreach($usuarios as $usuario){
                         ?>
-                        <tr>
+                        <tr style="border: 2px solid lightgrey; ">
                             <td><?php echo $usuario->getLogin(); ?></td>
                             <td><?php echo $usuario->getPermissao(); ?></td>
                             <td>
-                                <a href="index.php?action=editar&id<?php echo $usuario->getId();?>">Editar</a>
-                                <a href="index.php?action=excluir&id=<?php echo $usuario->getId();?>">Excluir</a>
+                                <a href="index.php?page=usuario&action=editar&id<?php echo $usuario->getId();?>">Editar</a>
+                                <a href="index.php?page=usuario&action=excluir&id=<?php echo $usuario->getId();?>">Excluir</a>
                             </td>
                         </tr>
                         <?php

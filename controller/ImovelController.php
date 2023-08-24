@@ -45,6 +45,12 @@
             return $usuarios->listAll();
         }
 
+        public static function excluir($id){
+            $imovel = new Imovel;
+
+            $imovel = $imovel->remove($id);
+        }
+
 
     }
 
