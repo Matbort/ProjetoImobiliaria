@@ -7,6 +7,7 @@
                 <th>Descrição</th>
                 <th>Foto</th>
                 <th><a href="index.php?page=imovel">Novo</th>
+                <th>Valor</th>
             </tr>
         </thead>
         <tbody>
@@ -14,14 +15,15 @@
 
                 require_once 'controller/ImovelController.php';
 
-                $usuarios = call_user_func(array('ImovelController','listar'));
-
-                if(isset($imovel) && !empty($imovel)){
-                    foreach($imovel as $imovel){
+                $imoveis = call_user_func(array('ImovelController','listar'));
+                
+                if(isset($imoveis) && !empty($imoveis)){
+                    foreach($imoveis as $imovel){
                         ?>
                         <tr>
-                            <td><?php echo $usuario->getDescricao(); ?></td>
-                            <td><?php echo $usuario->getFoto(); ?></td>
+                            <td><?php echo $imovel->getDescricao(); ?></td>
+                            <td><?php echo '<img width="30%" src="data:image/jpeg;base64,'.base64_encode($imovel->getFoto()) .'" />';; ?></td>
+                            <td><?php echo $imovel->getValor(); ?></td>
                             <td>
                                 <a href="index.php?action=editar&id<?php echo $imovel->getId();?>">Editar</a>
                                 <a href="index.php?action=excluir&id=<?php echo $imovel->getId();?>">Excluir</a>

@@ -5,13 +5,13 @@
 
     class Imovel extends Banco{
 
-        private $id;
-        private $descricao;
-        private $foto;
-        private $valor;
-        private $tipo;
-        private $fotoTipo;
-        private $path;
+        protected $id;
+        protected $descricao;
+        protected $foto;
+        protected $valor;
+        protected $tipo;
+        protected $fotoTipo;
+        protected $path;
 
         public function getId(){
             return $this->id;
@@ -76,7 +76,7 @@
 
             if($conn = $conexao->getConection()){
                 if($this->id > 0){
-                    $query = "UPDATE imovel SET descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo, fotoTipo = :fotoTipo WHERE id = :id";
+                    $query = "UPDATE imovel SET id = :id,descricao = :descricao, foto = :foto, valor = :valor, tipo = :tipo, fotoTipo = :fotoTipo WHERE id = :id";
                     $stmt = $conn->prepare($query);
                     if($stmt->execute(array(':descricao' => $this->descricao, ':foto' => $this->foto, ':valor' => $this->valor, ':tipo' => $this->tipo, ':fotoTipo' => $this->fotoTipo)))
                     {
@@ -142,12 +142,16 @@
             $result = array();
 
             if($stmt->execute()){
-                while($rs = $stmt->fetchObject(Usuario::class)){
+                while($rs = $stmt->fetchObject(Imovel::class)){
+                    
                     $result[] = $rs;
                 }
+                
             }else{
                 $result = false;
             }
+
+            return $result;
         }
   
         public function count(){

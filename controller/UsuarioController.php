@@ -9,8 +9,8 @@
 
             $usuario->setId($_POST['id']);
             $usuario->setLogin($_POST['login']);
-            $usuario->setSenha($_POST['senha1']);
-            $usuario->setPermissao($_POST['permissao']);
+            $usuario->setSenha($_POST['senha']);
+            $usuario->setPermissao($_POST['']);
 
             $usuario->save();
         }

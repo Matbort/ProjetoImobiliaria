@@ -1,4 +1,5 @@
 <?php
+
 require_once "menu.php";
 ?>
 <!DOCTYPE html>
@@ -50,12 +51,9 @@ require_once "menu.php";
 <?php
 
 if (isset($_POST['btnSalvar'])) {
-
-    header('Location: index.php?action=listar');
-
-    require_once '../controller/UsuarioController.php';
-
+    require_once 'controller/UsuarioController.php';
     call_user_func(array('UsuarioController', 'salvar'));
+    header('Location:index.php?action=listar');
 }
 
 ?>

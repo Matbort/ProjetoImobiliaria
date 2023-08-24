@@ -39,7 +39,8 @@
         }
 
         public static function listar(){
-            $usuarios = new Usuario;
+            $usuarios = new Imovel;
+           
 
             return $usuarios->listAll();
         }

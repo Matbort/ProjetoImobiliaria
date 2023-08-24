@@ -57,11 +57,11 @@
                     }
                 }else{
 
-                    $query = "insert into usuario (id, login, senha, permissao) values (null,:login,:senha,:permissao)";
+                    $query = "insert into usuario (id, login, senha, permissao) values (:id,:login,:senha,:permissao)";
 
                     $stmt = $conn->prepare($query);
 
-                    if($stmt->execute(array(':login' => $this->login, ':senha' => $this->senha, ':permissao' => $this->permissao))){
+                    if($stmt->execute(array(':id' => $this->id,':login' => $this->login, ':senha' => $this->senha, ':permissao' => $this->permissao))){
                         $result = $stmt->rowCount();
                     }
                 }
@@ -114,8 +114,10 @@
             $stmt = $conn->prepare($query);
 
             $result = array();
+           
 
             if($stmt->execute()){
+                
                 while($rs = $stmt->fetchObject(Usuario::class)){
                     $result[] = $rs;
                 }
